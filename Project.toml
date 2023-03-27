@@ -19,7 +19,6 @@ Dictionaries = "0.3.25"
 Flux = "0.13.14"
 StatsBase = "0.33.21"
 Zygote = "0.6.59"
-julia = "1.8.2"
 
 
 [extras]
