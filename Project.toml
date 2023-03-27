@@ -3,8 +3,24 @@ uuid = "21ade233-9772-486b-8b4a-1a75b0845905"
 authors = ["Shane Kuei-Hsien Chu (skchu@wustl.edu)"]
 version = "0.1.0"
 
+[deps]
+CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+Dictionaries = "85a47980-9c8c-11e8-2b9f-f7ca1fa99fb4"
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+Zygote = "e88e6eb3-aa80-5325-afca-941959d7151f"
+
 [compat]
 julia = "1.8.2"
+CUDA = "4.1.1"
+Dictionaries = "0.3.25"
+Flux = "0.13.14"
+StatsBase = "0.33.21"
+Zygote = "0.6.59"
+julia = "1.8.2"
+
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
