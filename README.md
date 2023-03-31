@@ -7,7 +7,7 @@
 
 General purpose motif discovery package that includes the discovery of flexible (long or gapped) motifs.
 
-This motif discovery package is currently undergoing active development and the method is currently under review by a journal.
+This motif discovery package is currently undergoing active development and the method is currently under review.
 
 # Installation
 To install MOTIFs.jl use Julia's package manager:
