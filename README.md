@@ -9,6 +9,9 @@ General purpose motif discovery package that includes the discovery of flexible 
 
 This motif discovery package is currently being actively developed and the method is currently under review with a journal.
 
+# Motivation
+(coming soon)
+
 # Installation
 To install MOTIFs.jl use Julia's package manager:
 ```
