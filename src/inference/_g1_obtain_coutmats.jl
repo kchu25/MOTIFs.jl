@@ -160,12 +160,12 @@ function run_thru(data, cdl, hp, len, projs, this_bg)
 
     ms = enriched_keys2motifs(H_w_enriched_keys_mtm, data, this_bg);
     expansions_ms!(ms, data, this_bg);
-    ms = alignment_merge!(ms, data, this_bg);
-    new_cmats = posdicts2countmats(ms, data.data_matrix);
-    new_cmats = trim_cmats(new_cmats, this_bg);
-    new_cmats = merge_count_matrices(new_cmats, this_bg);
+    ms          = alignment_merge!(ms, data, this_bg);
+    ms          = merge_to_remove_redundancy!(ms, data, this_bg)
+    new_cmats   = posdicts2countmats(ms, data.data_matrix);
+    new_cmats   = trim_cmats(new_cmats, this_bg);
+    new_cmats   = merge_count_matrices(new_cmats, this_bg);
     return countmats2motifs(new_cmats, this_bg);
-
 end
 
 

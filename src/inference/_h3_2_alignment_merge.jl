@@ -12,26 +12,38 @@ function enlarged_mat_add!(enlarged_mat, data_matrix, _start_, _end_, seq_ind, u
     end
 end
 
-function enlarged_mat_increment!(ms, pfm_ind, seq_ind, ind_k, diff_front, diff_end, data_matrix, L, enlarged_mat)
+function enlarged_mat_increment!(ms, pfm_ind, seq_ind, ind_k, diff_front, diff_end, data_matrix, L, 
+                                 enlarged_mat, enlarged_dict, enlarged_dict_use_comp; comp_match=false)
     use_comp = ms.use_comp[pfm_ind][seq_ind][ind_k];
     front_diff = use_comp ? diff_end : diff_front;
     end_diff   = diff_front + diff_end
     _start_    = ms.positions[pfm_ind][seq_ind][ind_k] - front_diff;
     _end_      = _start_ + ms.lens[pfm_ind] + end_diff - 1;
-    if 1 ≤ _start_ && _end_ ≤ L
+
+    if (1 ≤ _start_) && (_end_ ≤ L)
         enlarged_mat_add!(enlarged_mat, data_matrix, _start_, _end_, seq_ind, ms.use_comp[pfm_ind][seq_ind][ind_k])
+        if !haskey(enlarged_dict, seq_ind)
+            enlarged_dict[seq_ind] = [_start_]
+            enlarged_dict_use_comp[seq_ind] = [ifelse(comp_match, !use_comp, use_comp)]
+        else
+            push!(enlarged_dict[seq_ind], _start_)
+            push!(enlarged_dict_use_comp[seq_ind], comp_match)
+        end        
     end
 end
 
-function obtain_enlarged_matrix(ms::motifs{T,S}, pfm_ind, diff_front, diff_end, data_matrix, L) where {T,S}
+function obtain_enlarged_matrix(ms::motifs{T,S}, pfm_ind, diff_front, diff_end, data_matrix, L; comp_match=false) where {T,S}
     enlarged_length = ms.lens[pfm_ind] + diff_front + diff_end;
     enlarged_mat    = zeros(S, (4, enlarged_length))
+    enlarged_dict = Dict{T,Vector{T}}(i=>[] for i in keys(ms.positions[pfm_ind]))
+    enlarged_dict_use_comp = Dict{T,Vector{Bool}}(i=>[] for i in keys(ms.positions[pfm_ind]))
     @inbounds for seq_ind in keys(ms.positions[pfm_ind])
         for ind_k in 1:length(ms.positions[pfm_ind][seq_ind])
-            enlarged_mat_increment!(ms, pfm_ind, seq_ind, ind_k, diff_front, diff_end, data_matrix, L, enlarged_mat)
+            enlarged_mat_increment!(ms, pfm_ind, seq_ind, ind_k, diff_front, diff_end, data_matrix, L, 
+                enlarged_mat, enlarged_dict, enlarged_dict_use_comp; comp_match=comp_match)
         end
     end
-    return enlarged_mat
+    return ifelse(comp_match, reverse(enlarged_mat), enlarged_mat), enlarged_dict, enlarged_dict_use_comp
 end
 
 ####################################################################################################
@@ -50,20 +62,18 @@ function this_cmat_pair_of_different_len_has_high_allr(cmat1, cmat2, i, j, bg; m
     
     comp_match = false; diff_front = nothing; diff_end = nothing
 
+    numcol_smaller_mat = size(smaller_mat,2);
     for i = 1:abs(len_diff)+1
-        allr = avg_allr(smaller_mat, view(larger_mat, :,i:i+size(smaller_mat,2)-1), bg)
-        # println(allr)
+        allr = avg_allr(smaller_mat, view(larger_mat, :,i:i+numcol_smaller_mat-1), bg)
         if allr > allr_thresh
             diff_front = i-1
-            diff_end   = larger_mat_size - (i+size(smaller_mat,2)-1)            
+            diff_end   = larger_mat_size - (i+numcol_smaller_mat-1)            
             break
         end
-        allr_c = avg_allr(smaller_mat_r, view(larger_mat, :,i:i+size(smaller_mat,2)-1), bg)
-        # println(allr_c)
-
+        allr_c = avg_allr(smaller_mat_r, view(larger_mat, :,i:i+numcol_smaller_mat-1), bg)
         if allr_c > allr_thresh
             comp_match = true
-            diff_front = larger_mat_size - (i+size(smaller_mat,2)-1)
+            diff_front = larger_mat_size - (i+numcol_smaller_mat-1)
             diff_end   = i-1
             break
         end
@@ -74,7 +84,6 @@ end
 function alignment_merge!(ms, data, bg; allr_thresh=allr_thresh)
     count_matrix_each = posdicts2countmats(ms, data.data_matrix);
     ms.cmats = count_matrix_each;
-
     merged = fill(false, ms.num_motifs)
     for i = 1:ms.num_motifs
         for j = i+1:ms.num_motifs   
@@ -83,29 +92,20 @@ function alignment_merge!(ms, data, bg; allr_thresh=allr_thresh)
             diff_front, diff_end, smaller_ind, larger_ind, larger_mat, comp_match = 
                 this_cmat_pair_of_different_len_has_high_allr(ms.cmats[i], ms.cmats[j], i, j, bg)
             if !isnothing(diff_front) && !isnothing(diff_end)
-                # println("$i and $j ")
-                enlarged_matrix = obtain_enlarged_matrix(ms, smaller_ind, diff_front, diff_end, data.data_matrix, data.L)
-                # len_diff = diff_front+diff_end;
-                # len_diff == 0 && (println("len_diff is 0!!!!!!!!!!!!!!!!!"))
-                if comp_match
-                    enlarged_matrix_r = reverse(enlarged_matrix);
-                    if avg_allr(enlarged_matrix_r, larger_mat, bg) > allr_thresh 
-                        alllr = avg_allr(enlarged_matrix_r, larger_mat, bg) ;
-                        merge_add_counts && (ms.cmats[larger_ind] .+= enlarged_matrix_r)
 
-                        # append!(ms.positions[larger_ind], )
-                        merged[smaller_ind]  = true;
-                        # println("$smaller_ind is merged into $larger_ind in reverse_complement w $alllr, len_diff: $len_diff")                  
-                    end
-                else
-                    if avg_allr(enlarged_matrix, larger_mat, bg) > allr_thresh 
-                        alllr = avg_allr(enlarged_matrix, larger_mat, bg) ;
-                        merge_add_counts  && (ms.cmats[larger_ind] .+= enlarged_matrix)
-                        
-                        merged[smaller_ind]  = true;
-                        # println("$smaller_ind is merged into $larger_ind w $alllr, len_diff: $len_diff")
-                    end
-                end                
+                enlarged_matrix, enlarged_dict, enlarged_dict_use_comp = 
+                    obtain_enlarged_matrix(ms, smaller_ind, diff_front, diff_end, data.data_matrix, data.L; comp_match=comp_match)
+                if avg_allr(enlarged_matrix, larger_mat, bg) > allr_thresh 
+                    merge_add_counts && (ms.cmats[larger_ind] .+= enlarged_matrix)
+                    # merge the positions
+                    ms.positions[larger_ind] = mergewith(vcat, ms.positions[larger_ind], enlarged_dict)
+                    # merge the use_comp
+                    ms.use_comp[larger_ind] = mergewith(vcat, 
+                                                    ms.use_comp[larger_ind], 
+                                                    enlarged_dict_use_comp
+                                                    )
+                    merged[smaller_ind]  = true;          
+                end               
             end            
         end
     end

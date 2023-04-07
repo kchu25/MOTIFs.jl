@@ -58,11 +58,12 @@ function render_main_summary_page_no_olap(labels,
     close(io)
 end
 
-
 function render_result!(target_folder::String, ms, data, bg; alpha_fisher = 1e-5)
 
     logo_olap_folder, logo_no_olap_folder, pics_olap_folder, pics_no_olap_folder = get_folder_names(target_folder);
     make_folder_paths([target_folder, logo_olap_folder, logo_no_olap_folder, pics_olap_folder, pics_no_olap_folder]);
+
+    order_for_display = obtain_groupings_for_display1(ms);
 
     ############## overlap version render ##############
     @info "Scanning the foreground..."
@@ -74,16 +75,16 @@ function render_result!(target_folder::String, ms, data, bg; alpha_fisher = 1e-5
         get_uniq_counts(ms)
 
     @info "Calculating p-values..."
-    pvalues, sort_perm_1, uniq_active_counts_test = get_pvec_and_related_info(ms, data, alpha_fisher)
+    pvalues, sort_perm_1, uniq_active_counts_test = 
+        get_pvec_and_related_info2(ms, data, alpha_fisher, order_for_display)
     labels  = ["D$j" for j = 1:ms.num_motifs];
     logo_names   = ["d$(j)" for j = 1:ms.num_motifs];
     # @info "plot the overlap..."
-    # plot_position_overlap(ms, sort_perm_1, pics_olap_folder)
     @info "save the PWMs..."
     save_pfms_as_transfac(logo_olap_folder, ms.cmats, sort_perm_1, collect(1:ms.num_motifs));
     activate_counts_total = (Int.(active_counts .+ uniq_active_counts_test))[sort_perm_1]
-    valid_alphas = Int[];# wtf is valid_alphas?
-
+    valid_alphas = Int[]; # TODO: verify the purpose of this and remove it if necessary
+ 
     render_main_summary_page_olap(labels, 
                                 pvalues, 
                                 logo_names,

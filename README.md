@@ -26,7 +26,10 @@ discover_motifs(<fasta-path>, <output-folder-path>)
 ````
 
 # Software requirements 
- This package currectly requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download) for plotting the PWMs. You will need python3 and install Weblogo with following command:
+ This package currectly requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download) for PWM plotting. Install Weblogo by running the following command with python3 and pip3:
  ```bash
  pip3 install weblogo
  ```
+
+# Hardware requirements
+For now, a GPU is required for this package due to the use of [CUDA.jl](https://github.com/JuliaGPU/CUDA.jl) to accelerate some computations.

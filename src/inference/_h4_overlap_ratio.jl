@@ -79,16 +79,16 @@ function get_total_occupied_positions(position_ranges)
 end
 
 
-function overlap_inc!(pos_i, pos_j, overlap_ij, mutual_keys)
+# function overlap_inc!(pos_i, pos_j, overlap_ij, mutual_keys)
 
-end
+# end
 
 function get_overlap_ratio(ms)
     @info "Computing union ranges..."
     # union_poses = get_union_ranges.(ms.positions, ms.lens)
     union_poses = Vector{Dict{Int64, Vector{UnitRange{Int64}}}}(undef, ms.num_motifs)
     @floop for i = 1:ms.num_motifs
-        union_poses[i] = CodeSyntax6.get_union_ranges(ms.positions[i], ms.lens[i])
+        union_poses[i] = get_union_ranges(ms.positions[i], ms.lens[i])
     end
     
     @info "Computing total active positions..."

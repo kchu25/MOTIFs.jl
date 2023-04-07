@@ -52,3 +52,15 @@ function get_pvec_and_related_info(ms, data, alpha_fisher; no_olap=false)
     pvalues = get_rounded_pval.(p_vec_sort_perm, use_vec_sort_perm);
     return pvalues, sort_perm, uniq_active_counts_test
 end
+
+function get_pvec_and_related_info2(ms, data, alpha_fisher, order_for_display::Vector{Int}; no_olap=false)
+    pvec, uniq_active_counts_test = pvec_from_test_data(ms, data; no_olap=no_olap)
+    pvec_order_for_display = pvec[order_for_display]
+    indices_of_significant_motifs_to_display_ontop = @view order_for_display[pvec_order_for_display .< alpha_fisher]
+    indices_of_insignificant_motifs_to_display_onbot = @view order_for_display[pvec_order_for_display .≥ alpha_fisher]
+    indices2display = vcat(indices_of_significant_motifs_to_display_ontop, indices_of_insignificant_motifs_to_display_onbot)
+    pvec2display = pvec[indices2display]
+    use_vec = pvec2display .< alpha_fisher
+    pvalues = get_rounded_pval.(pvec2display, use_vec);
+    return pvalues, indices2display, uniq_active_counts_test
+end

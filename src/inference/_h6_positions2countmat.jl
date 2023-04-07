@@ -35,3 +35,21 @@ function posdicts2countmats(ms::motifs, data_matrix::Array{S,3}) where {S<:Real}
 
     return f_retrieval_t.(count_mats)
 end
+
+function posdicts2countmats(pos, use_comp, len, data_matrix::Array{S,3}) where {S<:Real}
+    len4 = 4*len;
+    count_mat = zeros(eltype(data_matrix), (4, len) );
+    for k in keys(pos)
+        for ind_k in 1:length(pos[k])
+            start_  = (pos[k][ind_k]-1)*4+1;
+            end_    = start_+len4-1;
+            if use_comp[k][ind_k]
+                count_mat .+= 
+                    reshape(submat_comlement(data_matrix, start_, end_, k, len),(4, len));
+            else
+                count_mat .+= reshape((@view data_matrix[start_:end_, 1, k]), (4, len));
+            end
+        end
+    end
+    return Float16.(count_mat)
+end
