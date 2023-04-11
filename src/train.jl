@@ -11,7 +11,7 @@ function setup_num_epochs(number_training_samples)
 end
 
 function train_ucdl(data; 
-                    # num_epochs=8
+                    num_epochs=nothing
                     # filter_len::Int = 8,
                     # f_len::Int = filter_len*4,
                     # M::Int = 45,
@@ -34,7 +34,7 @@ function train_ucdl(data;
     ps          = Flux.params(cdl);
     opt         = Flux.AdaBelief();
 
-    num_epochs = setup_num_epochs(data.N)
+    num_epochs = isnoting(num_epochs) : setup_num_epochs(data.N) : num_epochs;
     break_condition = false;
     for i in 1:num_epochs
         for S in data_load

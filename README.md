@@ -36,3 +36,16 @@ discover_motifs(<fasta-path>, <output-folder-path>)
 
 # Hardware requirements
 For now, a GPU is required for this package due to the use of [CUDA.jl](https://github.com/JuliaGPU/CUDA.jl) to accelerate some computations.
+
+
+# Adjustable Hyperparameters
+````julia
+
+# The user can adjust the number of epochs for training the network.
+discover_motifs(<fasta-path>, <output-folder-path>; num_epochs=10)
+
+````
+
+# Contact
+
+If you have any questions or suggestions regarding the usage or source code, please feel free to reach out to me at <skchu@wustl.edu>.
