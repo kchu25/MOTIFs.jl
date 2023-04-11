@@ -11,7 +11,7 @@ function setup_num_epochs(number_training_samples)
 end
 
 function train_ucdl(data; 
-                    num_epochs=nothing
+                    num_epochs=nothing,
                     # filter_len::Int = 8,
                     # f_len::Int = filter_len*4,
                     # M::Int = 45,
