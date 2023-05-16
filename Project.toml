@@ -1,7 +1,7 @@
 name = "MOTIFs"
 uuid = "21ade233-9772-486b-8b4a-1a75b0845905"
 authors = ["Shane Kuei-Hsien Chu (skchu@wustl.edu)"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
@@ -27,7 +27,7 @@ Dictionaries = "0.3.25"
 FLoops = "0.2.1"
 Flux = "0.13.16"
 HypothesisTests = "0.10.13"
-FastaLoader = "0.2.0"
+FastaLoader = "0.2.1"
 Mustache = "1.0.15"
 StaticArrays = "1.5.25"
 StatsBase = "0.33.21"
