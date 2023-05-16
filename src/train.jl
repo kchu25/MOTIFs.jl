@@ -34,7 +34,7 @@ function train_ucdl(data;
     ps          = Flux.params(cdl);
     opt         = Flux.AdaBelief();
 
-    num_epochs = isnoting(num_epochs) : setup_num_epochs(data.N) : num_epochs;
+    num_epochs = isnothing(num_epochs) ? setup_num_epochs(data.N) : num_epochs;
     break_condition = false;
     for i in 1:num_epochs
         for S in data_load
