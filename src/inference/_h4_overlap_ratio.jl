@@ -84,17 +84,17 @@ end
 # end
 
 function get_overlap_ratio(ms)
-    @info "Computing union ranges..."
+    # @info "Computing union ranges..."
     # union_poses = get_union_ranges.(ms.positions, ms.lens)
     union_poses = Vector{Dict{Int64, Vector{UnitRange{Int64}}}}(undef, ms.num_motifs)
     @floop for i = 1:ms.num_motifs
         union_poses[i] = get_union_ranges(ms.positions[i], ms.lens[i])
     end
     
-    @info "Computing total active positions..."
+    # @info "Computing total active positions..."
     acs = total_active_position.(union_poses)
     olap_ratio_ij = zeros(Float32, (ms.num_motifs, ms.num_motifs))
-    @info "Computing overlap ratio..."
+    # @info "Computing overlap ratio..."
     @floop for i = 1:ms.num_motifs
         # println(i)
         @inbounds for j = i+1:ms.num_motifs
