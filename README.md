@@ -26,7 +26,14 @@ using MOTIFs
 
 discover_motifs(<fasta-path>, <output-folder-path>)
 
+# for example
+
+discover_motifs("home/shane/mydata/fasta.fa", "home/shane/mydata/out/")
 ````
+
+# Interpret the results
+(coming soon)
+
 
 # Software requirements 
  This package currectly requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download) for PWM plotting. Install Weblogo by running the following command with python3 and pip3:
