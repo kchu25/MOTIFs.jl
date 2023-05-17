@@ -42,7 +42,7 @@ discover_motifs("home/shane/mydata/fasta.fa", "home/shane/mydata/out/")
  ```
 
 # Hardware requirements
-For now, a GPU is required for this package due to the use of [CUDA.jl](https://github.com/JuliaGPU/CUDA.jl) to accelerate some computations.
+For now, a GPU is required for this package due to the use of [CUDA.jl](https://github.com/JuliaGPU/CUDA.jl) to accelerate some computations. I plan to implement a CPU extension in the near future.
 
 
 # Adjustable Hyperparameters
