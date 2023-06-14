@@ -20,13 +20,16 @@ pkg> add MOTIFs
 ````julia
 using MOTIFs
 
-# Do motif discovery on a set of DNA sequences in a fasta file, where the `<fasta-path>` and `<output-folder-path>` are the absolute filepaths as strings.
+# Do motif discovery on a set of DNA sequences in a fasta file, 
+# where the `<fasta-path>` and `<output-folder-path>` are the 
+# absolute filepaths as strings.
 
 discover_motifs(<fasta-path>, <output-folder-path>)
 
 # for example
 
-discover_motifs("home/shane/mydata/fasta.fa", "home/shane/mydata/out/")
+discover_motifs("home/shane/mydata/fasta.fa", 
+                "home/shane/mydata/out/")
 ````
 
 # Interpret the results
