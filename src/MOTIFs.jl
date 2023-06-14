@@ -1,7 +1,7 @@
 module MOTIFs
 
 # modules for motif discovery
-using Flux, CUDA, Zygote, StatsBase, LinearAlgebra, Random, FastaLoader
+using Flux, CUDA, Zygote, StatsBase, LinearAlgebra, Random, SeqShuffle
 # modules for inferring the results
 using Dictionaries, DataStructures, StaticArrays
 # modules for rendering the results
@@ -38,6 +38,8 @@ function get_data_bg(data)
     return this_bg
 end
 
+include("loadfasta/helpers.jl")
+include("loadfasta/fasta.jl")
 include("model.jl")
 include("train.jl")
 include("inference/_0_const.jl")

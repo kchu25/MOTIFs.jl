@@ -389,8 +389,10 @@ function forward_pass_return_loss(S, cdl, hp, len, projs)
                        kappa_sparsity, kappa_stepsize,
                        hp, len, projs
                        )
-
-    return loss(S, Z, Y, X, D, ZY, F, F_orig, hp)
+    l = loss(S, Z, Y, X, D, ZY, F, F_orig, hp)
+    println("loss $l")
+    # return loss(S, Z, Y, X, D, ZY, F, F_orig, hp)
+    return l
 end
 
 
