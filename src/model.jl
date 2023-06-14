@@ -315,7 +315,6 @@ function loss(S, Z, Y, X, D, ZY, F, F_orig, hp)
     reconstruction_loss         = normalize_factor*sum((DZ+DY-S).^2)
     FX                          = sum(convolution(X, F, pad=(hp.h-1, hp.twoM-1), groups=hp.K), dims=3)
     syntax_reconstruction_loss  = normalize_factor*sum((FX - ZY).^2)
-    
     # abs_F_orig = abs.(F_orig)
     # l1l2_loss_orig = (sum(abs_F_orig) + sum(sqrt.(sum(abs_F_orig.^2, dims=(1,2)))))
     # l1l2_loss_orig = sum(abs_F_orig) 

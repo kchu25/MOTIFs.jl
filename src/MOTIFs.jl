@@ -19,11 +19,11 @@ function randomly_initialize_filters(;
                        rng=Random.GLOBAL_RNG, 
                        repeats=5, 
                        how_many_filters=10,
-                       float_type=Float16)    
+                       float_type=Float16)
     arr = zeros(float_type,(dim+1,
                             repeats,
                             1,
-                            how_many_filters));    
+                            how_many_filters));
     for i = 1:repeats, j = 1:how_many_filters
         unif = rand(rng, dim-1);
         arr[2:dim,i,1,j] .= sort(unif);

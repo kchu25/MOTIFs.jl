@@ -1,5 +1,6 @@
 function discover_motifs(datapath, save_path;
                          num_epochs=nothing)
+                         
     @info "load data"
     data = FASTA_DNA{float_type}(datapath)
     this_bg = get_data_bg(data)

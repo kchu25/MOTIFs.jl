@@ -44,7 +44,6 @@ function train_ucdl(data;
             end
 
             Flux.Optimise.update!(opt, ps, gs) # update parameters
-                        
             l1_loss = sum(abs.(prep_syntax_filters(cdl.F))) 
             # "l1 loss: $l1_loss" |> println
             if l1_loss < l1_loss_thresh 

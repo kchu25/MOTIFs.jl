@@ -4,7 +4,7 @@ const dat_t = Float32;          # data_matrix_type
 const int_t = Int32;            # integer type
 
 #= each label must associated with at least 200 sequences 
-   for classification 
+   for classification
 =#
 const label_count_thresh = 250; 
 const DNA_complement = Dict('A'=>'T','C'=>'G','G'=>'C','T'=>'A');        
