@@ -15,6 +15,11 @@ The paper presenting this method has been published in [Oxford Bioinformatics](h
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Interpret the results](#Interpret-the-results)
+- [Software requirements](#Software-requirements)
+- [Hardware requirements](#Hardware-requirements)
+- [Adjustable Hyperparameters](#Adjustable-Hyperparameters)
+- [Cite this work](#Cite-this-work)
+- [Contact](#Contact)
 
 
 
@@ -86,7 +91,7 @@ discover_motifs(<fasta-path>, <output-folder-path>; num_epochs=10)
 
 ````
 
-## Citation <a name="cite"></a>
+## Cite this work
 
 You can cite this work using the following BibTex entry:
 ```
