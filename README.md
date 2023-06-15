@@ -9,7 +9,16 @@ General purpose motif discovery package that includes the discovery of flexible 
 
 The paper presenting this method has been published in [Oxford Bioinformatics](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email).
 
-# Motivation
+## Table of contents
+
+- [Motivation](#Motivation)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Interpret the results](#Interpret-the-results)
+
+
+
+## Motivation
 Traditional methods such as [STREME](https://meme-suite.org/meme/doc/streme.html) and [HOMER](http://homer.ucsd.edu/homer/motif/) excel at efficiently finding the primary motifs of a transcription factor. This begs the question -- why do we need another motif discovery method?
 
 Because there may be more patterns in the datasets that aren't fully captured. This is even more so in in-vivo datasets such as ChIP-Seq.
@@ -34,13 +43,13 @@ Last, there may be cooperative binding patterns, e.g., ([Manuscript Figure 5](ht
 for which we see consecutive occurrences of [Oct4](https://en.wikipedia.org/wiki/Oct-4) and cooccurrence of [Oct4](https://en.wikipedia.org/wiki/Oct-4) and [Zic3](https://en.wikipedia.org/wiki/ZIC3), in addition to the Oct4-Sox2 motif. The presence of gapped motifs and cooperative binding patterns presents challenges for k-mer-based methods, as these methods are primarily designed to detect ungapped motifs.
 
 
-# Installation
+## Installation
 To install MOTIFs.jl use Julia's package manager:
 ```
 pkg> add MOTIFs
 ```
 
-# Usage
+## Usage
 ````julia
 using MOTIFs
 
@@ -55,21 +64,21 @@ discover_motifs("home/shane/mydata/fasta.fa",
                 "home/shane/mydata/out/")
 ````
 
-# Interpret the results
+## Interpret the results
 (coming soon)
 
 
-# Software requirements 
+## Software requirements 
  This package currectly requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download) for PWM plotting. Install Weblogo by running the following command with python3 and pip3:
  ```bash
  pip3 install weblogo
  ```
 
-# Hardware requirements
+## Hardware requirements
 Currently, a GPU is required for this package as it utilizes [CUDA.jl](https://github.com/JuliaGPU/CUDA.jl) to accelerate certain computations. However, I plan to implement a CPU extension in the future.
 
 
-# Adjustable Hyperparameters
+## Adjustable Hyperparameters
 ````julia
 
 # The user can adjust the number of epochs for training the network.
@@ -77,7 +86,7 @@ discover_motifs(<fasta-path>, <output-folder-path>; num_epochs=10)
 
 ````
 
-# Citation <a name="cite"></a>
+## Citation <a name="cite"></a>
 
 You can cite this work using the following BibTex entry:
 ```
@@ -91,6 +100,6 @@ You can cite this work using the following BibTex entry:
 }
 ```
 
-# Contact
+## Contact
 
 If you have any questions or suggestions regarding the usage or source code, please feel free to reach out to me at <skchu@wustl.edu>.
