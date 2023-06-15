@@ -14,13 +14,13 @@ Traditional methods such as [STREME](https://meme-suite.org/meme/doc/streme.html
 
 Because there may be more patterns in the datasets that aren't fully captured. This is even more so in in-vivo datasets such as ChIP-Seq.
 
-Our work finds that more than half the selected ChiP-Seq datasets that we've examined from [JASPAR 2022](https://jaspar.genereg.net/) containes transposable elements that often overlaps the primary binding sites. For instance, NFE2L2, YY1, STAT1, SRF, AR exhibit overlaps with transposable elements ([Figure 4](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
+Our work finds that more than half the selected ChiP-Seq datasets that we've examined from [JASPAR 2022](https://jaspar.genereg.net/) containes transposable elements that overlaps the primary binding sites. For instance, NFE2L2, YY1, STAT1, SRF, AR exhibit overlaps with transposable elements ([Figure 4](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
 
 ![image info](./imgs/long_1.png)
 
 These long patterns pose challenges for traditional k-mer-based methods as space complexity is exponential.
 
-Furthermore, many datasets exhibit a large presence of gapped motifs. For example, we found that ChIP-Seq datasets from both [JASPAR](https://jaspar.genereg.net/) and [Factorbook](https://www.factorbook.org/) more often than not contains gapped motifs ([Figure 6](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
+Furthermore, many datasets exhibit a large presence of gapped motifs. For example, we found that ChIP-Seq datasets from both [JASPAR](https://jaspar.genereg.net/) and [Factorbook](https://www.factorbook.org/) often contains gapped motifs ([Figure 6](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
 
 ![image info](./imgs/gapped.png)
 
