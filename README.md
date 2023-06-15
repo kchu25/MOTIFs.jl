@@ -5,10 +5,35 @@
 [![Build Status](https://github.com/kchu25/MOTIFs.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/kchu25/MOTIFs.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Coverage](https://codecov.io/gh/kchu25/MOTIFs.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/MOTIFs.jl)
 
-General purpose motif discovery package that includes the discovery of flexible (long or gapped) motifs.
+General purpose motif discovery package that includes the discovery of flexible (long or gapped) motifs. 
+
+The paper presenting this method has been published in [Oxford Bioinformatics](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email).
 
 # Motivation
-(coming soon)
+Traditional methods such as [STREME](https://meme-suite.org/meme/doc/streme.html) and [HOMER](http://homer.ucsd.edu/homer/motif/) excel at efficiently finding the primary motifs of a transcription factor. This begs the question -- why do we need another motif discovery method?
+
+Because there may be more patterns in the datasets that aren't fully captured. This is even more so in in-vivo datasets such as ChIP-Seq.
+
+Our work finds that more than half the selected ChiP-Seq datasets that we've examined from [JASPAR](https://jaspar.genereg.net/) containes transposable elements that often overlaps the primary binding sites. For instance, NFE2L2, YY1, STAT1, SRF, AR exhibit overlaps with transposable elements ([Figure 4]((https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email))):
+
+![image info](./imgs/long_1.png)
+
+These long patterns pose challenges for traditional k-mer-based methods as space complexity becomes infeasible.
+
+Furthermore, many NGS datasets exhibit a large presence of gapped motifs. For example, we found that ChIP-Seq datasets from both [JASPAR](https://jaspar.genereg.net/) and [Factorbook](https://www.factorbook.org/) more often than not contains gapped motifs ([Figure 6]((https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email))):
+
+![image info](./imgs/gapped.png)
+
+and the spacers that characterized the gapped motifs [can be widely varied (Figure 2, supplementary material)](./imgs/gaps.png).
+
+Last, there may be cooperative binding patterns, e.g., [Figure 5]((https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
+
+![image info](./imgs/avsec3.png)
+
+
+for which we see consecutive occurrences of Oct4 and cooccurrence of Oct4 and Zic3. The presence of gapped motifs and cooperative binding patterns presents challenges for k-mer-based methods, as these methods are primarily designed to detect ungapped motifs.
+
+
 
 # Installation
 To install MOTIFs.jl use Julia's package manager:
@@ -56,7 +81,7 @@ discover_motifs(<fasta-path>, <output-folder-path>; num_epochs=10)
 
 # Citation <a name="cite"></a>
 
-The paper presenting this method has been published in [Oxford Bioinformatics](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email). It can be cited using the following BibTex entry:
+You can cite this work using the following BibTex entry:
 ```
 @article{chu2023finding,
   title={Finding Motifs Using DNA Images Derived From Sparse Representations},

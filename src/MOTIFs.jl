@@ -44,6 +44,7 @@ include("model.jl")
 include("train.jl")
 include("inference/_0_const.jl")
 include("inference/_1_code_retrieval.jl")
+
 include("inference/_2_enumerate.jl")
 include("inference/_3_make_pfms.jl")
 include("inference/_s1_make_motifs.jl")
@@ -70,5 +71,9 @@ include("render/plotting.jl")
 include("render/pvec_calculations.jl")
 include("render/render.jl")
 include("wrap.jl")
+
+# TODOs:
+# use progress meter to track the training progress?
+
 
 end

@@ -1,13 +1,12 @@
 ######## fasta load settings: ##################
 const max_num_read_fasta = 100000;
-const dat_t = Float32;          # data_matrix_type
 const int_t = Int32;            # integer type
 
 #= each label must associated with at least 200 sequences 
    for classification
 =#
 const label_count_thresh = 250; 
-const DNA_complement = Dict('A'=>'T','C'=>'G','G'=>'C','T'=>'A');        
+const DNA_complement = Dict('A'=>'T','C'=>'G','G'=>'C','T'=>'A');
 
 reverse_complement(s::String) = 
     join(islowercase(s[si]) ? s[si] : DNA_complement[s[si]] for si = length(s):-1:1)
@@ -161,7 +160,7 @@ end
 
 function get_data_matrices2(dna_read, labels; 
                            k_train=1, k_test=2, 
-                           FloatType=dat_t, 
+                           FloatType=float_type, 
                            train_test_split_ratio=0.85,
                            shuffle=true)
     # set train_test_split_ratio = 1.0 if no test set is needed    
@@ -206,7 +205,7 @@ end
 
 function get_data_matrices(dna_read; 
                            k_train=1, k_test=2, 
-                           FloatType=dat_t, 
+                           FloatType=float_type, 
                            train_test_split_ratio=0.85,
                            shuffle=true)
     # set train_test_split_ratio = 1.0 if no test set is needed    

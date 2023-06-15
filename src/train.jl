@@ -1,8 +1,8 @@
 function setup_num_epochs(number_training_samples)
     if number_training_samples < 1000
-        return 5
+        return 25
     elseif number_training_samples < 10000
-        return 7
+        return 10
     elseif number_training_samples < 100000
         return 5
     else
