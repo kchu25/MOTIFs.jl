@@ -14,7 +14,7 @@ Traditional methods such as [STREME](https://meme-suite.org/meme/doc/streme.html
 
 Because there may be more patterns in the datasets that aren't fully captured. This is even more so in in-vivo datasets such as ChIP-Seq.
 
-Our work finds that more than half the selected ChiP-Seq datasets that we've examined from [JASPAR 2022](https://jaspar.genereg.net/) containes transposable elements that overlaps the primary binding sites. For instance, NFE2L2, YY1, STAT1, SRF, AR exhibit overlaps with transposable elements ([Manuscript Figure 4](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
+Our work finds that more than half the selected ChiP-Seq datasets that we've examined from [JASPAR 2022](https://jaspar.genereg.net/) containes transposable elements that overlaps the primary binding sites. For instance, [NFE2L2](https://en.wikipedia.org/wiki/NFE2L2), [YY1](https://en.wikipedia.org/wiki/YY1), [STAT1](https://en.wikipedia.org/wiki/STAT1), [SRF](https://en.wikipedia.org/wiki/Serum_response_factor), [AR](https://en.wikipedia.org/wiki/Androgen_receptor) exhibit overlaps with transposable elements ([Manuscript Figure 4](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
 
 ![image info](./imgs/long_1.png)
 
