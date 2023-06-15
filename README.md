@@ -31,7 +31,7 @@ Last, there may be cooperative binding patterns, e.g., ([Figure 5](https://acade
 ![image info](./imgs/avsec3.png)
 
 
-for which we see consecutive occurrences of Oct4 and cooccurrence of Oct4 and Zic3. The presence of gapped motifs and cooperative binding patterns presents challenges for k-mer-based methods, as these methods are primarily designed to detect ungapped motifs.
+for which we see consecutive occurrences of [Oct4](https://en.wikipedia.org/wiki/Oct-4) and cooccurrence of [Oct4](https://en.wikipedia.org/wiki/Oct-4) and [Zic3](https://en.wikipedia.org/wiki/ZIC3). The presence of gapped motifs and cooperative binding patterns presents challenges for k-mer-based methods, as these methods are primarily designed to detect ungapped motifs.
 
 
 # Installation
