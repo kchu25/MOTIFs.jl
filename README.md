@@ -92,7 +92,7 @@ Once the motif discovery process is complete, a summary.html page is generated i
 
 For instance, here is an example result page showcasing data from the  [SP1 transcription factor from JASPAR](https://jaspar.genereg.net/matrix/MA0079.3/):
 
-![image info](./imgs/re_top.png)
+> ![image info](./imgs/re_top.png)
 
 The top of the result page has
 - Number of sequences: The total number of DNA sequences in the dataset.
@@ -106,12 +106,12 @@ The top of the result page has
 
 Note that in in-vivo datasets, especially for zinc-finger proteins, a large number of motifs can be observed, often characterized by variable spacings in their binding sites.
 
-![image info](./imgs/re_gap.png)
+> ![image info](./imgs/re_gap.png)
 
 ### Statistically insignificant motifs 
 Some of the motifs shown here have their p-values in grey, which typically suggests that these motifs are not particularly enriched in the dataset. However, this does not imply that they do not exist in the dataset.
 
-![image info](./imgs/re_high_pval.png)
+> ![image info](./imgs/re_high_pval.png)
 
 ## Cite this work
 
