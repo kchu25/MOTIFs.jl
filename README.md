@@ -1,4 +1,4 @@
-# Finding Motifs Using DNA Images Derived From Sparse Representations
+## Finding Motifs Using DNA Images Derived From Sparse Representations
 
 <!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://kchu25.github.io/MOTIFs.jl/stable/)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://kchu25.github.io/MOTIFs.jl/dev/)
