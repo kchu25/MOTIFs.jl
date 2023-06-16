@@ -53,6 +53,7 @@ pkg> add MOTIFs
 ```
 
 ## Usage
+In Julia:
 ````julia
 using MOTIFs
 
