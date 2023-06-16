@@ -96,7 +96,7 @@ For instance, here is an example result page showcasing data from the  [SP1 tran
 
 The top of the result page has
 - **Number of sequences**: The total number of DNA sequences in the dataset.
-- **Label**: A number assigned for each discovered motifs.
+- **Label**: A label assigned for each discovered motifs.
     * Each label is hyperlinked to a text file in TRANSFAC format that can be parsed.
 - **P-value**: The satistical significance of the discovered motif using Fisher exact test ([Manuscript section 2.7.2](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)).
 - **\# instances**: An estimate of the number of occurrences in the dataset ([Manuscript section 2.7.3](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)).
