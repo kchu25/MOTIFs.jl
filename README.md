@@ -109,7 +109,7 @@ Note that in in-vivo datasets, especially for zinc-finger proteins, a large numb
 > ![image info](./imgs/re_gap.png)
 
 ### Statistically insignificant motifs 
-Some of the motifs shown here have their p-values in grey, which typically suggests that these motifs are not particularly enriched in the dataset. However, this does not imply that they do not exist in the dataset.
+Some of the motifs shown here have their p-values in grey, which means that they have a relatively high p-value ($p$ > 0.5, Fisher exact test). This statistical result suggests that these motifs are not particularly enriched in the dataset. However, this does not imply that these motifs do not exist in the dataset.
 
 > ![image info](./imgs/re_high_pval.png)
 
