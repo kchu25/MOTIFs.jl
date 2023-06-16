@@ -6,7 +6,7 @@
 
 General purpose motif discovery package that includes the discovery of flexible (long or gapped) motifs. 
 
-The paper presenting this method [has been published in Oxford Bioinformatics](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email).
+This code repository corresponds to the paper [Finding Motifs Using DNA Images Derived From Sparse Representations]((https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)), which has been published in Oxford Bioinformatics.
 
 ## Table of contents
 

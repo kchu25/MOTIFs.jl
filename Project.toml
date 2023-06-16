@@ -1,7 +1,7 @@
 name = "MOTIFs"
 uuid = "21ade233-9772-486b-8b4a-1a75b0845905"
 authors = ["Shane Kuei-Hsien Chu (skchu@wustl.edu)"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
