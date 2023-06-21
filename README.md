@@ -30,7 +30,7 @@ Our work reveals that over half of the ChIP-Seq datasets selected from the [JASP
 
 ![image info](./imgs/long_1.png)
 
-These long patterns present challenges for traditional k-mer-based methods due to their exponential space complexity.
+These long patterns present challenges for traditional k-mer-based methods due to their exponential time and space complexity.
 
 Furthermore, many datasets exhibit a large presence of gapped motifs. For example, we found that ChIP-Seq datasets from both [JASPAR](https://jaspar.genereg.net/) and [Factorbook](https://www.factorbook.org/) often contains gapped motifs ([Manuscript Figure 6](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email)):
 
@@ -71,7 +71,7 @@ discover_motifs("home/shane/mydata/fasta.fa",
 ## Software requirements 
  This package currectly requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download) for PWM plotting. Install Weblogo by running the following command with python3 and pip3:
  ```bash
- pip3 install weblogo
+ pip install weblogo
  ```
 
 ## Hardware requirements
