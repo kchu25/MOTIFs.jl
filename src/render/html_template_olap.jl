@@ -37,7 +37,6 @@ const html_template_olap=mt"""<!DOCTYPE html>
 </head>
 
 <body>
-    soft cluster representation
     <div style="display:flex;">
         <div style="float:left; margin:25px; border:1px solid black; max-width:3500px; padding:10px;" > 			
             Number of sequences: {{:num_seq}} <br>
