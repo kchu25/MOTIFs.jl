@@ -1,10 +1,10 @@
 const float_type_retrieval = Float16
 
 const stored_code_component_t = 
-    NamedTuple{(:position, :fil, :seq, :mag), Tuple{UInt8, UInt8, UInt32, float_type_retrieval}}
+    NamedTuple{(:position, :fil, :seq, :mag), Tuple{UInt16, UInt16, UInt32, float_type_retrieval}}
 
 const composition_key_type =
-     NamedTuple{(:f1,:f2,:f3,:d12,:d13,:len), Tuple{Int8, Int8, Int8, UInt8, UInt8, UInt8}}
+     NamedTuple{(:f1,:f2,:f3,:d12,:d13,:len), Tuple{Int8, Int8, Int8, UInt16, UInt16, UInt16}}
 
 const value_type = 
     NamedTuple{(:seq_num, :pos, :comp), Tuple{UInt32, UInt16, Bool}}
