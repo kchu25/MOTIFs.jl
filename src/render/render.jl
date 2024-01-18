@@ -58,7 +58,7 @@ function render_main_summary_page_no_olap(labels,
     close(io)
 end
 
-function render_result!(target_folder::String, ms, data, bg; alpha_fisher = 1e-5)
+function render_result!(target_folder, ms, data, bg; alpha_fisher = 1e-5)
 
     logo_olap_folder, logo_no_olap_folder, pics_olap_folder, pics_no_olap_folder = get_folder_names(target_folder);
     make_folder_paths([target_folder, logo_olap_folder, logo_no_olap_folder, pics_olap_folder, pics_no_olap_folder]);

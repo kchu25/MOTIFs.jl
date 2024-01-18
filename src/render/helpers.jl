@@ -1,12 +1,12 @@
 make_grey(s::String) = grey_tag_front*s*grey_tag_back
 
-get_folder_names(target_folder::String) = 
+get_folder_names(target_folder) = 
     target_folder*"/"*logo_olap_folder_name, 
     target_folder*"/"*logo_no_olap_folder_name,
     target_folder*"/"*pics_olap_folder_name,
     target_folder*"/"*pics_no_olap_folder_name
 
-function make_folder_paths(folders::Vector{String})
+function make_folder_paths(folders)
     for folder in folders
         !isdir(folder) && mkpath(folder)
     end
